@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloud Daily Digest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <main class="max-w-5xl mx-auto p-6">
+      <header class="mb-6">
+        <h1 class="text-3xl font-extrabold">☁️ Cloud Daily Digest</h1>
+        <p class="text-sm text-gray-600 mt-1">{{ date_str }} · 한국 표준시</p>
+      </header>
+
+      {% for prov in data %}
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-3">{{ prov.name }}</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {% for item in prov["items"] %}
+          <article class="bg-white rounded-2xl shadow p-4">
+            <a href="{{ item.link }}" class="text-lg font-semibold hover:underline" target="_blank" rel="noopener">
+              {{ item.title }}
+            </a>
+            <p class="text-xs text-gray-500 mt-1">{{ item.published }}</p>
+            {% if item.source %}
+            <p class="text-xs text-gray-400 mt-1">출처: {{ item.source }}</p>
+            {% endif %}
+            {% if item.summary %}
+            <p class="text-sm mt-2">{{ item.summary }}</p>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+
+      <footer class="mt-12 text-xs text-gray-500">
+        클라우드 데일리 다이제스트 · Tailwind CDN 사용
+      </footer>
+    </main>
+  </body>
+</html>
