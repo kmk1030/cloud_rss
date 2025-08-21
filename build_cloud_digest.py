@@ -6,7 +6,7 @@ import yaml
 from datetime import datetime
 import pytz
 from jinja2 import Template
-from deep_translator import GoogleTranslator
+#from deep_translator import GoogleTranslator
 
 # ==================== 설정 ====================
 TIMEZONE = "Asia/Seoul"
